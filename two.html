@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aidus - ตรวจโรคต้อเนื้อ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+        body {
+            background: linear-gradient(to bottom, #cfe9ff, #b3e0f7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .logo span:first-child {
+            color: #1976d2;
+        }
+        .logo span:last-child {
+            color: black;
+        }
+        .back-button {
+            align-self: flex-start;
+            margin: 10px;
+            background: #5c7ea8;
+            padding: 10px;
+            border-radius: 12px;
+            color: white;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        .recommend {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        .button {
+            width: 80%;
+            max-width: 300px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 20px;
+            padding: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .button:hover {
+            background: #f0f0f0;
+        }
+        .eye-image {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 350px;
+            border-radius: 20px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+        .process-btn {
+            background: #ffde59;
+            color: black;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 3px solid white;
+            cursor: pointer;
+        }
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">←</a>
+    <div class="logo"><span>Ai</span><span>dus</span></div>
+
+    <div class="recommend">
+        คำแนะนำ : ถ่ายภาพดวงตาของคุณในที่<br>มีแสงสว่างเพียงพอ
+    </div>
+
+    <div class="button">📷 ถ่ายภาพใหม่</div>
+
+    <label class="button" for="fileInput">🖼️ เลือกรูปจากแกลเลอรี่</label>
+    <input type="file" id="fileInput" accept="image/*">
+
+    <img id="preview" class="eye-image" src="สกรีนช็อต 2025-07-18 143951.png" alt="ใส่รูปภาพตางคุณ">
+
+    <a href="three.html"><div class="process-btn" >ประมวลผล 👆</div></a>
+
+    <script>
+    const fileInput = document.getElementById('fileInput');
+    const preview = document.getElementById('preview');
+
+    fileInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imageData = e.target.result;
+                preview.src = imageData;
+                localStorage.setItem('selectedImage', imageData); // ✅ บันทึกภาพไว้
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+
+</body>
+</html>

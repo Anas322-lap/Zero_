@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aidus - ผลการวิเคราะห์</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Prompt', sans-serif;
+    }
+    body {
+        background: linear-gradient(to bottom, #cfe9ff, #b3e0f7);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        min-height: 100vh;
+    }
+    .logo {
+        font-size: 32px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+    .logo span:first-child { color: #1976d2; }
+    .logo span:last-child { color: black; }
+    .back-button {
+        align-self: flex-start;
+        margin: 10px;
+        background: #5c7ea8;
+        padding: 10px;
+        border-radius: 12px;
+        color: white;
+        font-size: 24px;
+        text-decoration: none;
+    }
+    .alert-icon {
+        width: 120px;
+        margin: 20px 0;
+    }
+    .warning-text {
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 15px;
+    }
+    .sub-warning {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .eye-image {
+        width: 80%;
+        max-width: 350px;
+        border-radius: 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        margin-bottom: 20px;
+    }
+    .note {
+        text-align: center;
+        font-size: 16px;
+        margin: 20px;
+        color: #d32f2f;
+        font-weight: bold;
+    }
+    .note span {
+        color: #000;
+        font-weight: normal;
+    }
+    .button {
+        width: 80%;
+        max-width: 300px;
+        background: #d1f2c9;
+        padding: 20px;
+        margin: 10px 0;
+        border-radius: 12px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .button:hover {
+        background: #b6e7ad;
+    }
+</style>
+</head>
+<body>
+<a href="#" class="back-button">←</a>
+<div class="logo"><span>Ai</span><span>dus</span></div>
+
+<img class="alert-icon" src="https://cdn-icons-png.flaticon.com/512/727/727606.png" alt="Warning">
+
+<div class="warning-text">ควรปรึกษาจักษุแพทย์โดยด่วน!</div>
+<div class="sub-warning">**พบสัญญาณของโรคต้อเนื้อ**<br>จากผลการวิเคราะห์ภาพเบื้องต้น</div>
+
+<img id="preview" class="eye-image" src="" alt="ภาพดวงตา">
+
+<div class="note">**ข้อควรระวัง** <span>ผลลัพธ์นี้ใช้เพื่อการคัดกรองเบื้องต้นเท่านั้น ไม่สามารถใช้แทนการวินิจฉัยของจักษุแพทย์โดยตรงได้</span></div>
+
+<div class="button">🔎 ค้นหาจักษุแพทย์ใกล้ฉัน</div>
+<div class="button">📄 ข้อมูลเกี่ยวกับโรคต้อเนื้อ</div>
+
+<script>
+    // ดึงค่ารูปจาก localStorage ที่เก็บจากหน้าเลือกภาพก่อนหน้า
+    const preview = document.getElementById('preview');
+const imageSrc = localStorage.getItem('selectedImage');
+if(imageSrc){
+    preview.src = imageSrc;
+}
+</script>
+
+</body>
+</html>
