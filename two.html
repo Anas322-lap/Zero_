@@ -22,7 +22,8 @@
         .logo {
             font-size: 32px;
             font-weight: bold;
-            margin: 10px 0;
+            margin-bottom: 16px;
+        
         }
         .logo span:first-child {
             color: #1976d2;
@@ -31,8 +32,9 @@
             color: black;
         }
         .back-button {
+            margin-top: 60px;
             align-self: flex-start;
-            margin: 10px;
+            
             background: #5c7ea8;
             padding: 10px;
             border-radius: 12px;
@@ -90,42 +92,94 @@
         input[type="file"] {
             display: none;
         }
+        .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+}
+ nav {
+          position: fixed;
+           top: 0;
+    left: 0;
+    width: 100%;
+    height: 8%;
+    padding: 1rem;
+   background: linear-gradient(to right, #b6caff, #b1ecff, #f3f3f3);
+    color: white;
+    z-index: 999; /* ให้อยู่บนสุดถ้าซ้อนกับอย่างอื่น */
+}
     </style>
 </head>
 <body>
+     <nav>
+          <div class="container">
+                 <div class="logo"><span>Ai</span><span style="color: black;">dus</span></div>
+          </div>
+        </nav>
+
     <a href="index.html" class="back-button">←</a>
-    <div class="logo"><span>Ai</span><span>dus</span></div>
+  
 
     <div class="recommend">
         คำแนะนำ : ถ่ายภาพดวงตาของคุณในที่<br>มีแสงสว่างเพียงพอ
     </div>
 
-    <div class="button">📷 ถ่ายภาพใหม่</div>
+    <label class="button" for="cameraInput">📷 ถ่ายภาพใหม่</label>
+<input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none">
+
 
     <label class="button" for="fileInput">🖼️ เลือกรูปจากแกลเลอรี่</label>
     <input type="file" id="fileInput" accept="image/*">
 
     <img id="preview" class="eye-image" src="สกรีนช็อต 2025-07-18 143951.png" alt="ใส่รูปภาพตางคุณ">
 
-    <a href="three.html"><div class="process-btn" >ประมวลผล 👆</div></a>
+    <div class="process-btn" onclick="checkBeforeProcess()">ประมวลผล 👆</div>
+
 
     <script>
     const fileInput = document.getElementById('fileInput');
     const preview = document.getElementById('preview');
+    const cameraInput = document.getElementById('cameraInput');
 
-    fileInput.addEventListener('change', function(event) {
+    fileInput.addEventListener('change', handleImageUpload);
+    cameraInput.addEventListener('change', handleImageUpload);
+
+    function handleImageUpload(event) {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = function(e) {
                 const imageData = e.target.result;
                 preview.src = imageData;
-                localStorage.setItem('selectedImage', imageData); // ✅ บันทึกภาพไว้
-            }
+                localStorage.setItem('selectedImage', imageData);
+            };
             reader.readAsDataURL(file);
         }
-    });
+    }
+
+    function checkBeforeProcess() {
+        if (preview.src.includes('สกรีนช็อต') || preview.src === '' || preview.src.includes('placeholder')) {
+            alert('กรุณาอัปโหลดหรือถ่ายภาพก่อนดำเนินการประมวลผล');
+        } else {
+            window.location.href = 'nolmal.html';
+        }
+    }
+
+cameraInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const imageData = e.target.result;
+            preview.src = imageData;
+            localStorage.setItem('selectedImage', imageData);
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
 </script>
+
 
 </body>
 </html>

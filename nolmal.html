@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ผลลัพธ์การวิเคราะห์ - ตาปกติ</title>
+  <style>
+    body {
+      font-family: 'Prompt', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(to bottom, #cfe9ff, #b3e0f7);
+      color: #333;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .logo {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 16px;
+        
+        }
+
+    .logo span:first-child {
+      color: #1976d2;
+    }
+
+    .logo span:last-child {
+      color: black;
+    }
+
+    .result-box {
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 90vw;
+    }
+
+    .result-box h2 {
+      color: #2e7d32;
+    }
+
+    .eye-image {
+      width: 80%;
+      max-width: 300px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #0d47a1;}
+    .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+
+    }
+     nav {
+          position: fixed;
+           top: 0;
+    left: 0;
+    width: 100%;
+    height: 4.5%;
+    padding: 1rem;
+   background: linear-gradient(to right, #b6caff, #b1ecff, #f3f3f3);
+    color: white;
+    z-index: 999; /* ให้อยู่บนสุดถ้าซ้อนกับอย่างอื่น */
+}
+  </style>
+</head>
+<body>
+    <nav>
+          <div class="container">
+                 <div class="logo"><span>Ai</span><span style="color: black;">dus</span></div>
+          </div>
+        </nav>
+
+
+
+  <div class="result-box">
+    <h2>ดวงตาของคุณอยู่ในภาวะปกติ 🎉</h2>
+    <p>ไม่พบสัญญาณของโรคต้อเนื้อจากภาพที่คุณอัปโหลด</p>
+    <img id="uploadedImage" class="eye-image" src="" alt="ภาพดวงตาที่คุณอัปโหลด">
+    <p style="margin-top: 20px; color: #555">หากมีอาการผิดปกติ ควรพบจักษุแพทย์เพื่อตรวจวินิจฉัยเพิ่มเติม</p>
+  </div>
+
+  <a href="index.html" class="btn">กลับสู่หน้าหลัก</a>
+
+  <script>
+    // โหลดภาพจาก localStorage มาแสดง
+    const uploadedImage = localStorage.getItem('selectedImage');
+    if (uploadedImage) {
+      document.getElementById('uploadedImage').src = uploadedImage;
+    }
+  </script>
+</body>
+</html>
